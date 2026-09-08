@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editor de nota | Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="font-[Quicksand] bg-[#fef9f2] min-h-screen">
+
+    <header class="bg-white border-b border-amber-100 sticky top-0 z-10">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="dashboard.html" class="text-sm text-amber-700 hover:underline"><i class="fas fa-arrow-left mr-1"></i> Volver a notas</a>
+            <span class="font-bold text-amber-700">Vamos por ahí · Admin</span>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 py-8 max-w-2xl">
+        <h1 id="editor-title" class="text-xl font-bold text-gray-800 mb-6">Nueva nota</h1>
+
+        <form id="post-form" class="bg-white rounded-2xl p-6 shadow-sm space-y-4">
+            <div>
+                <label class="text-sm text-gray-600 block mb-1">Título</label>
+                <input type="text" id="post-title" required class="w-full p-3 border border-gray-300 rounded-2xl">
+            </div>
+
+            <div>
+                <label class="text-sm text-gray-600 block mb-1">Slug (URL)</label>
+                <input type="text" id="post-slug" required class="w-full p-3 border border-gray-300 rounded-2xl text-sm">
+            </div>
+
+            <div>
+                <label class="text-sm text-gray-600 block mb-1">Categoría</label>
+                <select id="post-category" class="w-full p-3 border border-gray-300 rounded-2xl"></select>
+            </div>
+
+            <div>
+                <label class="text-sm text-gray-600 block mb-1">Copete / resumen breve</label>
+                <textarea id="post-excerpt" rows="2" class="w-full p-3 border border-gray-300 rounded-2xl"></textarea>
+            </div>
+
+            <div>
+                <label class="text-sm text-gray-600 block mb-1">Imagen de portada</label>
+                <input type="file" id="post-cover-file" accept="image/*" class="text-sm mb-2">
+                <input type="text" id="post-cover-url" placeholder="URL de la imagen" class="w-full p-2 border border-gray-300 rounded-xl text-sm">
+            </div>
+
+            <div>
+                <label class="text-sm text-gray-600 block mb-1">Contenido</label>
+                <textarea id="post-content" rows="12" required class="w-full p-3 border border-gray-300 rounded-2xl font-mono text-sm" placeholder="Podés usar HTML simple: <p>, <b>, <i>, <h3>, <a>, <img>..."></textarea>
+                <p class="text-xs text-gray-400 mt-1">Se admite HTML básico (párrafos, negrita, links, imágenes).</p>
+            </div>
+
+            <div class="flex gap-6">
+                <label class="flex items-center gap-2 text-sm text-gray-600">
+                    <input type="checkbox" id="post-published"> Publicada
+                </label>
+                <label class="flex items-center gap-2 text-sm text-gray-600">
+                    <input type="checkbox" id="post-featured"> Destacada
+                </label>
+            </div>
+
+            <button type="submit" id="post-submit-btn" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 rounded-full transition">
+                Guardar nota
+            </button>
+        </form>
+    </main>
+
+    <script src="../js/categories.js"></script>
+    <script src="../js/supabase-client.js"></script>
+    <script src="js/admin-auth.js"></script>
+    <script src="js/editor.js"></script>
+</body>
+</html>

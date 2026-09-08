@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Vamos por ahí</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="font-[Quicksand] bg-[#fef9f2] min-h-screen flex items-center justify-center px-4">
+
+    <div class="bg-white rounded-3xl shadow-md p-8 w-full max-w-sm">
+        <h1 class="text-2xl font-bold text-amber-700 text-center mb-1">Vamos por ahí</h1>
+        <p class="text-center text-gray-500 text-sm mb-6">Panel de administración</p>
+
+        <form id="login-form" class="space-y-4">
+            <input type="email" id="email" placeholder="Email" required
+                class="w-full p-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-400">
+            <input type="password" id="password" placeholder="Contraseña" required
+                class="w-full p-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-amber-400">
+            <button type="submit" class="w-full bg-amber-500 hover:bg-amber-600 text-white font-semibold py-3 rounded-full transition">
+                Ingresar
+            </button>
+        </form>
+        <p id="login-error" class="text-red-500 text-sm text-center mt-4 hidden">Email o contraseña incorrectos.</p>
+    </div>
+
+    <script src="../js/supabase-client.js"></script>
+    <script>
+        // Si ya hay sesión activa, va directo al dashboard
+        supabaseClient.auth.getSession().then(({ data: { session } }) => {
+            if (session) window.location.href = 'dashboard.html';
+        });
+
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            const { error } = await supabaseClient.auth.signInWithPassword({ email, password });
+
+            if (error) {
+                document.getElementById('login-error').classList.remove('hidden');
+                return;
+            }
+            window.location.href = 'dashboard.html';
+        });
+    </script>
+</body>
+</html>

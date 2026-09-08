@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banners | Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="font-[Quicksand] bg-[#fef9f2] min-h-screen">
+
+    <div id="admin-header"></div>
+    <div class="flex">
+        <aside id="admin-sidebar" class="w-56 shrink-0 bg-white border-r border-amber-100 min-h-[calc(100vh-53px)] p-4 space-y-1"></aside>
+
+        <main class="flex-1 min-w-0 p-4 md:p-6 max-w-3xl">
+            <h1 class="text-xl font-bold text-gray-800 mb-4">Banners publicitarios</h1>
+
+            <form id="banner-form" class="bg-white rounded-2xl p-5 shadow-sm space-y-3 mb-6">
+                <p id="banner-form-title" class="font-semibold text-gray-700">Nuevo banner</p>
+
+                <div>
+                    <label class="text-sm text-gray-600 block mb-1">Imagen</label>
+                    <input type="file" id="banner-image-file" accept="image/*" class="text-sm">
+                    <input type="text" id="banner-image-url" placeholder="URL de la imagen" required
+                        class="w-full mt-2 p-2 border border-gray-300 rounded-xl text-sm">
+                </div>
+
+                <input type="text" id="banner-link-url" placeholder="Link al hacer clic (opcional)"
+                    class="w-full p-2 border border-gray-300 rounded-xl text-sm">
+
+                <input type="text" id="banner-alt" placeholder="Descripción / anunciante"
+                    class="w-full p-2 border border-gray-300 rounded-xl text-sm">
+
+                <select id="banner-position" class="w-full p-2 border border-gray-300 rounded-xl text-sm"></select>
+
+                <label class="flex items-center gap-2 text-sm text-gray-600">
+                    <input type="checkbox" id="banner-active" checked> Activo
+                </label>
+
+                <div class="flex gap-2 pt-2">
+                    <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-white text-sm font-semibold py-2 px-4 rounded-full transition">Guardar</button>
+                    <button type="button" id="banner-cancel" class="text-sm text-gray-500 hover:text-gray-700">Cancelar</button>
+                </div>
+            </form>
+
+            <div id="lista-banners" class="space-y-2"></div>
+        </main>
+    </div>
+
+    <script src="../js/categories.js"></script>
+    <script src="../js/supabase-client.js"></script>
+    <script src="js/admin-auth.js"></script>
+    <script src="js/admin-layout.js"></script>
+    <script src="js/banners-admin.js"></script>
+</body>
+</html>

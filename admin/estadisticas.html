@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estadísticas | Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../style.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="font-[Quicksand] bg-[#fef9f2] min-h-screen">
+
+    <div id="admin-header"></div>
+    <div class="flex">
+        <aside id="admin-sidebar" class="w-56 shrink-0 bg-white border-r border-amber-100 min-h-[calc(100vh-53px)] p-4 space-y-1"></aside>
+
+        <main class="flex-1 min-w-0 p-4 md:p-6 max-w-4xl">
+            <h1 class="text-xl font-bold text-gray-800 mb-6">Estadísticas</h1>
+
+            <div id="tarjetas-resumen" class="grid grid-cols-2 md:grid-cols-5 gap-3 mb-8"></div>
+
+            <div class="grid md:grid-cols-2 gap-5">
+                <div class="bg-white rounded-2xl p-5 shadow-sm">
+                    <p class="font-semibold text-gray-700 mb-3 text-sm">Notas por categoría</p>
+                    <canvas id="chart-categorias"></canvas>
+                </div>
+                <div class="bg-white rounded-2xl p-5 shadow-sm">
+                    <p class="font-semibold text-gray-700 mb-3 text-sm">Notas más vistas</p>
+                    <canvas id="chart-notas"></canvas>
+                </div>
+                <div class="bg-white rounded-2xl p-5 shadow-sm md:col-span-2">
+                    <p class="font-semibold text-gray-700 mb-3 text-sm">Banners con más clics</p>
+                    <canvas id="chart-banners"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/categories.js"></script>
+    <script src="../js/supabase-client.js"></script>
+    <script src="js/admin-auth.js"></script>
+    <script src="js/admin-layout.js"></script>
+    <script src="js/estadisticas.js"></script>
+</body>
+</html>
