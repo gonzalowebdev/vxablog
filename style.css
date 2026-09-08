@@ -1,0 +1,197 @@
+html {
+    scroll-behavior: smooth;
+}
+
+#mobile-menu {
+    transition: all 0.3s ease;
+}
+
+.bg-white {
+    transition: transform 0.2s;
+}
+.bg-white:hover {
+    transform: translateY(-4px);
+}
+
+.rounded-3xl {
+    border-radius: 1.5rem;
+}
+.rounded-2xl {
+    border-radius: 1rem;
+}
+
+/* Estilos para el carrusel */
+#carousel-track {
+    display: flex;
+    width: 100%;
+}
+
+/* Nav del portal */
+.nav-link {
+    color: #4b5563;
+    transition: color 0.2s;
+}
+.nav-link:hover,
+.nav-link-active {
+    color: #b45309;
+}
+
+/* Recorte de texto en tarjetas (fallback sin plugin de Tailwind) */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Contenido de una nota */
+.prose-nota p {
+    margin-bottom: 1.25rem;
+}
+.prose-nota img {
+    border-radius: 1.5rem;
+    margin: 1.5rem 0;
+}
+.prose-nota a {
+    color: #b45309;
+    text-decoration: underline;
+}
+
+.banner-slot img {
+    transition: opacity 0.2s;
+}
+.banner-slot:hover img {
+    opacity: 0.9;
+}
+
+/* Panel admin: sidebar + nav */
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem 0.8rem;
+    border-radius: 0.75rem;
+    color: #4b5563;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.admin-nav-link:hover {
+    background: #fef6e9;
+}
+.admin-nav-link-active {
+    background: #fde8c8;
+    color: #b45309;
+}
+
+@media (max-width: 1023px) {
+    #admin-sidebar {
+        position: fixed;
+        top: 53px;
+        left: 0;
+        bottom: 0;
+        z-index: 30;
+        transform: translateX(-100%);
+        transition: transform 0.2s ease;
+        overflow-y: auto;
+    }
+    #admin-sidebar.admin-sidebar-open {
+        transform: translateX(0);
+    }
+}
+@media (min-width: 1024px) {
+    #admin-sidebar {
+        display: block !important;
+    }
+}
+
+/* ============================================
+   DISEÑO "REVISTA" — por ahora solo se usa en index.html
+   ============================================ */
+.font-display {
+    font-family: 'Playfair Display', serif;
+}
+
+.section-eyebrow {
+    display: block;
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #b45309;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    line-height: 1.2;
+    font-weight: 700;
+    color: #292019;
+}
+
+.section-header {
+    border-bottom: 2px solid #292019;
+    padding-bottom: 0.9rem;
+}
+
+/* Destacada principal: la nota grande del bloque de portada */
+.destacada-principal .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    line-height: 1.25;
+}
+.destacada-secundaria .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    line-height: 1.3;
+}
+
+/* Tarjetas de nota estándar (últimas notas, categorías) */
+.nota-card .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.05rem;
+    line-height: 1.3;
+}
+
+/* Recomendados: tarjetas verticales, más altas que anchas */
+.recomendado-card .aspect-recomendado {
+    aspect-ratio: 3 / 4;
+}
+
+/* Agenda: tarjeta horizontal con bloque de fecha destacado */
+.agenda-card {
+    display: flex;
+    align-items: stretch;
+}
+.agenda-fecha {
+    width: 4.5rem;
+    flex-shrink: 0;
+    background: #292019;
+    color: #fdf3e2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.agenda-fecha .dia {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+}
+.agenda-fecha .mes {
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-top: 0.15rem;
+}
+
+/* Pastillas de categoría (movidas antes del footer) */
+.pastilla-categoria {
+    border: 1.5px solid #f3d9a4;
+    transition: border-color 0.2s, background 0.2s;
+}
+.pastilla-categoria:hover {
+    border-color: #b45309;
+    background: #fef6e9;
+}

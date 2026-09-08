@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categoría | Vamos por ahí</title>
+    <meta name="robots" content="index, follow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="logovpa.jpg" sizes="32x32">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="font-[Quicksand] bg-[#fef9f2]">
+
+    <div id="site-header"></div>
+
+    <main>
+        <section class="py-12 bg-white border-b border-amber-100">
+            <div class="container mx-auto px-4">
+                <h1 id="categoria-titulo" class="text-3xl md:text-4xl font-bold text-gray-800 mb-2">Cargando...</h1>
+                <p id="categoria-desc" class="text-gray-600"></p>
+            </div>
+        </section>
+
+        <div id="banner-categoria-top" class="container mx-auto px-4 mt-8 hidden"></div>
+
+        <section class="py-12">
+            <div class="container mx-auto px-4">
+                <div id="categoria-notas" class="grid sm:grid-cols-2 md:grid-cols-3 gap-5"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/categories.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/partials.js"></script>
+    <script src="js/banners.js"></script>
+    <script src="js/categoria.js"></script>
+</body>
+</html>

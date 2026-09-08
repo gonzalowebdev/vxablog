@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vamos por ahí | Córdoba, viajes y recomendados</title>
+    <meta name="description" content="Notas sobre Córdoba, gastronomía, escapadas, experiencias y viajes, curadas por Diani.">
+    <meta name="robots" content="index, follow">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;600;700&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/jpeg" href="logovpa.jpg" sizes="32x32">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="font-[Quicksand] bg-[#fef9f2]">
+
+    <div id="site-header"></div>
+
+    <main>
+        <!-- HERO -->
+        <section class="py-14 md:py-20 bg-white border-b border-amber-100">
+            <div class="container mx-auto px-4 text-center max-w-2xl">
+                <h1 class="font-display text-4xl md:text-5xl font-bold text-[#292019] mb-4">Vamos por ahí</h1>
+                <p class="text-lg text-gray-600">Córdoba, gastronomía, escapadas y viajes, contados por Diani.</p>
+            </div>
+        </section>
+
+        <div id="banner-home-top" class="container mx-auto px-4 mt-8 hidden"></div>
+
+        <!-- DESTACADAS -->
+        <section class="py-12">
+            <div class="container mx-auto px-4">
+                <div class="section-header flex justify-between items-end mb-6">
+                    <div>
+                        <span class="section-eyebrow">Portada</span>
+                        <h2 class="section-title">Destacadas</h2>
+                    </div>
+                </div>
+                <div id="destacadas" class="grid md:grid-cols-3 md:grid-rows-2 gap-5"></div>
+            </div>
+        </section>
+
+        <!-- ÚLTIMAS NOTAS -->
+        <section class="py-12 bg-[#fef6e9]">
+            <div class="container mx-auto px-4">
+                <div class="section-header flex justify-between items-end mb-6">
+                    <div>
+                        <span class="section-eyebrow">Recién publicadas</span>
+                        <h2 class="section-title">Últimas notas</h2>
+                    </div>
+                </div>
+                <div id="ultimas-notas" class="grid sm:grid-cols-2 md:grid-cols-3 gap-5"></div>
+            </div>
+        </section>
+
+        <!-- SECCIONES POR CATEGORÍA (se arman dinámicamente) -->
+        <div id="categorias-secciones"></div>
+
+        <!-- PASTILLAS DE CATEGORÍA -->
+        <section class="py-12 bg-[#fef6e9]">
+            <div class="container mx-auto px-4">
+                <div class="section-header flex justify-between items-end mb-6">
+                    <div>
+                        <span class="section-eyebrow">Todo el contenido</span>
+                        <h2 class="section-title">Explorá por categoría</h2>
+                    </div>
+                </div>
+                <div id="categorias-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4"></div>
+            </div>
+        </section>
+    </main>
+
+    <div id="site-footer"></div>
+
+    <script src="js/categories.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/partials.js"></script>
+    <script src="js/banners.js"></script>
+    <script src="js/home.js"></script>
+    <script>
+        document.getElementById('categorias-grid').innerHTML = CATEGORIES.map(c => `
+            <a href="categoria.html?cat=${c.slug}" class="pastilla-categoria bg-white rounded-2xl p-5 text-center shadow-sm">
+                <span class="font-semibold text-amber-700">${c.label}</span>
+            </a>
+        `).join('');
+    </script>
+</body>
+</html>
