@@ -36,6 +36,13 @@ async function cargarContenidoAsesoria() {
   document.getElementById('content-que-trabajamos').innerHTML = itemsALista(content.asesoria_que_trabajamos);
   document.getElementById('content-que-llevas').innerHTML = itemsALista(content.asesoria_que_llevas);
 
+  if (content.asesoria_hero_image) {
+    document.getElementById('hero-section').style.backgroundImage =
+      `linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('${content.asesoria_hero_image}')`;
+  }
+  if (content.asesoria_avatar) document.getElementById('avatar-img').src = content.asesoria_avatar;
+  if (content.asesoria_sobremi_image) document.getElementById('sobremi-img').src = content.asesoria_sobremi_image;
+
   if (content.whatsapp_number) whatsappNumberActual = content.whatsapp_number;
 }
 

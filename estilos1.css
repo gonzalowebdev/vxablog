@@ -1,0 +1,81 @@
+/* ============================================
+   PROPUESTA 1 · "DIARIO CLÁSICO"
+   Newsprint editorial: negro + rojo tinta, serif marcado,
+   tarjetas planas con borde fino (sin sombra, sin redondeo).
+
+   Cómo usarla: agregar, DESPUÉS de style.css, en cada HTML:
+   <link rel="stylesheet" href="estilos1.css">
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=PT+Serif:ital@0;1&family=Source+Sans+3:wght@400;600;700&display=swap');
+
+:root {
+  --ink: #1a1a1a;
+  --ink-soft: #4a4642;
+  --ink-faint: #7a746c;
+  --accent: #7a1f1f;
+  --accent-dark: #5c1717;
+  --accent-soft: #f2e2e0;
+  --bg-main: #f7f5ef;
+  --bg-alt: #efeadf;
+  --card-bg: #ffffff;
+  --border-soft: #d9d2c2;
+  --radius-card: 0px;
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Source Sans 3', sans-serif;
+}
+
+body { background-color: var(--bg-main) !important; font-family: var(--font-body) !important; color: var(--ink) !important; }
+
+h1, h2, h3, .font-display, .section-title, .card-title {
+  font-family: var(--font-heading) !important;
+  color: var(--ink) !important;
+  font-weight: 800 !important;
+}
+
+.section-eyebrow { color: var(--accent) !important; font-family: var(--font-body) !important; }
+.section-header { border-bottom: 3px double var(--ink) !important; }
+
+.nav-link:hover, .nav-link-active { color: var(--accent) !important; }
+.text-amber-700, .text-amber-600 { color: var(--accent) !important; }
+
+.bg-amber-500, .bg-amber-400, .bg-amber-600, .bg-amber-700 { background-color: var(--accent) !important; }
+.hover\:bg-amber-600:hover, .hover\:bg-amber-500:hover, .hover\:bg-amber-100:hover { background-color: var(--accent-dark) !important; color: #fff !important; }
+
+.bg-\[\#fef6e9\] { background-color: var(--bg-alt) !important; }
+.border-amber-100 { border-color: var(--border-soft) !important; }
+.border-amber-300 { border-color: var(--accent) !important; }
+
+.text-gray-800 { color: var(--ink) !important; }
+.text-gray-700, .text-gray-600 { color: var(--ink-soft) !important; }
+.text-gray-500 { color: var(--ink-faint) !important; }
+
+.bg-white { background-color: var(--card-bg) !important; }
+
+/* Tarjetas: sin redondeo en todo el sitio */
+.rounded-2xl, .rounded-3xl, .rounded-xl, .rounded-lg {
+  border-radius: var(--radius-card) !important;
+}
+
+/* Las que además son "tarjetas" reales (tienen sombra) pasan a borde fino, sin sombra */
+.shadow-sm, .shadow-md {
+  box-shadow: none !important;
+  border: 1px solid var(--border-soft) !important;
+}
+.hover\:shadow-md:hover {
+  box-shadow: none !important;
+  border-color: var(--accent) !important;
+}
+
+.destacada-principal, .destacada-secundaria { border: 1px solid var(--ink) !important; }
+
+.pastilla-categoria { border-color: var(--border-soft) !important; }
+.pastilla-categoria:hover { border-color: var(--accent) !important; background: var(--accent-soft) !important; }
+
+.agenda-fecha { background: var(--ink) !important; color: var(--bg-main) !important; }
+.prose-nota blockquote { border-left-color: var(--accent) !important; font-family: var(--font-heading) !important; font-size: 1.2rem; }
+
+.admin-nav-link-active { background: var(--accent-soft) !important; color: var(--accent) !important; }
+.admin-nav-link:hover { background: var(--accent-soft) !important; }
+.ql-toolbar.ql-snow { background: var(--bg-alt) !important; border-color: var(--border-soft) !important; }
+.ql-container.ql-snow { font-family: var(--font-body) !important; border-color: var(--border-soft) !important; }

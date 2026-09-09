@@ -1,0 +1,87 @@
+/* ============================================
+   PROPUESTA 2 · "BOHO TERRACOTA"
+   Cálido y artesanal: terracota + oliva, serif elegante,
+   tarjetas con esquina cortada y sombra desplazada tipo sello.
+
+   Cómo usarla: agregar, DESPUÉS de style.css, en cada HTML:
+   <link rel="stylesheet" href="estilos2.css">
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=DM+Sans:wght@400;500;700&display=swap');
+
+:root {
+  --ink: #3a2e22;
+  --ink-soft: #6b5c4a;
+  --ink-faint: #93836e;
+  --accent: #c1622d;
+  --accent-dark: #9c4d22;
+  --accent-soft: #f3ded0;
+  --accent-2: #5f6b3f;
+  --bg-main: #f8efe2;
+  --bg-alt: #f0e2cd;
+  --card-bg: #fffaf3;
+  --border-soft: #e6cfaf;
+  --radius-card: 2px;
+  --font-heading: 'Cormorant Garamond', serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+body { background-color: var(--bg-main) !important; font-family: var(--font-body) !important; color: var(--ink) !important; }
+
+h1, h2, h3, .font-display, .section-title, .card-title {
+  font-family: var(--font-heading) !important;
+  color: var(--ink) !important;
+  font-weight: 700 !important;
+}
+.section-title { font-size: 2rem !important; }
+
+.section-eyebrow { color: var(--accent) !important; }
+.section-header { border-bottom: 2px solid var(--accent) !important; }
+
+.nav-link:hover, .nav-link-active { color: var(--accent) !important; }
+.text-amber-700, .text-amber-600 { color: var(--accent) !important; }
+
+.bg-amber-500, .bg-amber-400 { background-color: var(--accent) !important; }
+.bg-amber-600, .bg-amber-700 { background-color: var(--accent-2) !important; }
+.hover\:bg-amber-600:hover, .hover\:bg-amber-500:hover { background-color: var(--accent-dark) !important; }
+.hover\:bg-amber-100:hover { background-color: var(--accent-soft) !important; }
+
+.bg-\[\#fef6e9\] { background-color: var(--bg-alt) !important; }
+.border-amber-100 { border-color: var(--border-soft) !important; }
+.border-amber-300 { border-color: var(--accent) !important; }
+
+.text-gray-800 { color: var(--ink) !important; }
+.text-gray-700, .text-gray-600 { color: var(--ink-soft) !important; }
+.text-gray-500 { color: var(--ink-faint) !important; }
+
+.bg-white { background-color: var(--card-bg) !important; }
+
+/* Tarjetas: casi sin redondeo en todo el sitio */
+.rounded-2xl, .rounded-3xl, .rounded-xl, .rounded-lg {
+  border-radius: var(--radius-card) !important;
+}
+
+/* Las tarjetas reales (con sombra) llevan esquina cortada + sombra desplazada, sin borde */
+.shadow-sm, .shadow-md {
+  border: none !important;
+  box-shadow: 6px 6px 0 var(--accent-soft) !important;
+  clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 0 100%);
+}
+.hover\:shadow-md:hover {
+  box-shadow: 9px 9px 0 var(--accent) !important;
+}
+
+.destacada-principal, .destacada-secundaria {
+  clip-path: polygon(0 0, calc(100% - 20px) 0, 100% 20px, 100% 100%, 0 100%);
+}
+
+.pastilla-categoria { border-color: var(--border-soft) !important; }
+.pastilla-categoria:hover { border-color: var(--accent) !important; background: var(--accent-soft) !important; }
+
+.agenda-fecha { background: var(--accent-2) !important; color: var(--bg-main) !important; }
+.prose-nota blockquote { border-left-color: var(--accent) !important; font-family: var(--font-heading) !important; font-size: 1.3rem; }
+
+.admin-nav-link-active { background: var(--accent-soft) !important; color: var(--accent-dark) !important; }
+.admin-nav-link:hover { background: var(--accent-soft) !important; }
+.ql-toolbar.ql-snow { background: var(--bg-alt) !important; border-color: var(--border-soft) !important; }
+.ql-container.ql-snow { font-family: var(--font-body) !important; border-color: var(--border-soft) !important; }

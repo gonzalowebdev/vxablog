@@ -195,3 +195,42 @@ html {
     border-color: #b45309;
     background: #fef6e9;
 }
+
+/* Editor de notas (Quill) */
+#post-content-editor {
+    min-height: 280px;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+}
+.ql-toolbar.ql-snow {
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+    background: #fef6e9;
+}
+.ql-container.ql-snow {
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+}
+
+/* Contenido de nota generado por Quill: títulos, listas y citas */
+.prose-nota h2, .prose-nota h3 {
+    font-weight: 700;
+    color: #292019;
+    margin: 1.5rem 0 0.75rem;
+}
+.prose-nota h2 { font-size: 1.5rem; }
+.prose-nota h3 { font-size: 1.25rem; }
+.prose-nota ul, .prose-nota ol {
+    margin: 0 0 1.25rem 1.5rem;
+}
+.prose-nota ul { list-style: disc; }
+.prose-nota ol { list-style: decimal; }
+.prose-nota blockquote {
+    border-left: 4px solid #f59e0b;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    color: #57534e;
+    font-style: italic;
+}

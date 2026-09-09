@@ -1,4 +1,5 @@
 let editingPostId = null;
+let quill;
 
 function poblarSelectCategoria() {
   document.getElementById('post-category').innerHTML = CATEGORIES.map(c =>
@@ -13,6 +14,55 @@ function slugify(text) {
     .replace(/[^a-z0-9\s-]/g, '')
     .trim()
     .replace(/\s+/g, '-');
+}
+
+// Sube la imagen elegida al bucket post-images y la inserta en el editor
+// (en vez de guardarla en base64 dentro del texto, que infla la nota).
+function imageHandler() {
+  const input = document.createElement('input');
+  input.type = 'file';
+  input.accept = 'image/*';
+  input.onchange = async () => {
+    const file = input.files[0];
+    if (!file) return;
+
+    const range = quill.getSelection(true);
+    quill.insertText(range.index, 'Subiendo imagen...', 'italic', true);
+
+    const path = `${Date.now()}-${file.name}`;
+    const { error } = await supabaseClient.storage.from('post-images').upload(path, file);
+
+    quill.deleteText(range.index, 'Subiendo imagen...'.length);
+
+    if (error) {
+      alert('Error al subir la imagen: ' + error.message);
+      return;
+    }
+
+    const { data } = supabaseClient.storage.from('post-images').getPublicUrl(path);
+    quill.insertEmbed(range.index, 'image', data.publicUrl);
+    quill.setSelection(range.index + 1);
+  };
+  input.click();
+}
+
+function initQuill() {
+  quill = new Quill('#post-content-editor', {
+    theme: 'snow',
+    placeholder: 'Escribí la nota acá...',
+    modules: {
+      toolbar: {
+        container: [
+          [{ header: [2, 3, false] }],
+          ['bold', 'italic', 'underline'],
+          [{ list: 'ordered' }, { list: 'bullet' }],
+          ['blockquote', 'link', 'image'],
+          ['clean'],
+        ],
+        handlers: { image: imageHandler },
+      },
+    },
+  });
 }
 
 async function cargarPostExistente() {
@@ -30,7 +80,7 @@ async function cargarPostExistente() {
   document.getElementById('post-slug').value = post.slug;
   document.getElementById('post-category').value = post.category;
   document.getElementById('post-excerpt').value = post.excerpt || '';
-  document.getElementById('post-content').value = post.content;
+  quill.root.innerHTML = post.content || '';
   document.getElementById('post-cover-url').value = post.cover_image_url || '';
   document.getElementById('post-published').checked = post.published;
   document.getElementById('post-featured').checked = post.featured;
@@ -39,6 +89,7 @@ async function cargarPostExistente() {
 document.addEventListener('DOMContentLoaded', async () => {
   await requireAuth();
   poblarSelectCategoria();
+  initQuill();
   await cargarPostExistente();
 
   // Autogenera el slug a partir del título, solo si el usuario no lo tocó a mano
@@ -68,7 +119,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       slug: document.getElementById('post-slug').value,
       category: document.getElementById('post-category').value,
       excerpt: document.getElementById('post-excerpt').value,
-      content: document.getElementById('post-content').value,
+      content: quill.root.innerHTML,
       cover_image_url: document.getElementById('post-cover-url').value,
       published: document.getElementById('post-published').checked,
       featured: document.getElementById('post-featured').checked,

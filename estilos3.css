@@ -1,0 +1,89 @@
+/* ============================================
+   PROPUESTA 3 · "MINIMAL MODERNO"
+   Contemporáneo y limpio: navy + mostaza, sans geométrica,
+   tarjetas totalmente planas con barra de acento arriba.
+
+   Cómo usarla: agregar, DESPUÉS de style.css, en cada HTML:
+   <link rel="stylesheet" href="estilos3.css">
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --ink: #1e293b;
+  --ink-soft: #475569;
+  --ink-faint: #94a3b8;
+  --accent: #d97706;
+  --accent-dark: #b45309;
+  --accent-soft: #fdf1de;
+  --accent-2: #0d9488;
+  --bg-main: #fafaf9;
+  --bg-alt: #f1f0ed;
+  --card-bg: #ffffff;
+  --border-soft: #e7e5e0;
+  --radius-card: 0px;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+body { background-color: var(--bg-main) !important; font-family: var(--font-body) !important; color: var(--ink) !important; }
+
+h1, h2, h3, .font-display, .section-title, .card-title {
+  font-family: var(--font-heading) !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.01em;
+}
+
+.section-eyebrow { color: var(--accent-2) !important; }
+.section-header { border-bottom: 2px solid var(--ink) !important; }
+
+.nav-link:hover, .nav-link-active { color: var(--accent) !important; }
+.text-amber-700, .text-amber-600 { color: var(--accent-dark) !important; }
+
+.bg-amber-500, .bg-amber-400, .bg-amber-600 { background-color: var(--accent) !important; }
+.bg-amber-700 { background-color: var(--ink) !important; }
+.hover\:bg-amber-600:hover, .hover\:bg-amber-500:hover { background-color: var(--accent-dark) !important; }
+.hover\:bg-amber-100:hover { background-color: var(--accent-soft) !important; }
+
+.bg-\[\#fef6e9\] { background-color: var(--bg-alt) !important; }
+.border-amber-100 { border-color: var(--border-soft) !important; }
+.border-amber-300 { border-color: var(--accent) !important; }
+
+.text-gray-800 { color: var(--ink) !important; }
+.text-gray-700, .text-gray-600 { color: var(--ink-soft) !important; }
+.text-gray-500 { color: var(--ink-faint) !important; }
+
+.bg-white { background-color: var(--card-bg) !important; }
+
+/* Tarjetas: totalmente planas en todo el sitio */
+.rounded-2xl, .rounded-3xl, .rounded-xl, .rounded-lg {
+  border-radius: var(--radius-card) !important;
+}
+
+/* Las tarjetas reales (con sombra) pasan a plano + barra de acento arriba */
+.shadow-sm, .shadow-md {
+  box-shadow: none !important;
+  border: 1px solid var(--border-soft) !important;
+  border-top: 4px solid var(--accent) !important;
+}
+.hover\:shadow-md:hover {
+  box-shadow: 0 10px 24px rgba(30, 41, 59, 0.10) !important;
+  border-top-color: var(--accent-dark) !important;
+}
+
+.destacada-principal, .destacada-secundaria { border-top: 5px solid var(--accent) !important;color:rgb(255 255 255 / var(--tw-text-opacity, 1)) !important; }
+
+.pastilla-categoria { border-color: var(--border-soft) !important; }
+.pastilla-categoria:hover { border-color: var(--accent) !important; background: var(--accent-soft) !important; }
+
+.agenda-fecha { background: var(--ink) !important; color: var(--accent-soft) !important; }
+.prose-nota blockquote { border-left-color: var(--accent-2) !important; }
+
+.admin-nav-link-active { background: var(--accent-soft) !important; color: var(--accent-dark) !important; }
+.admin-nav-link:hover { background: var(--bg-alt) !important; }
+.ql-toolbar.ql-snow { background: var(--bg-alt) !important; border-color: var(--border-soft) !important; }
+.ql-container.ql-snow { font-family: var(--font-body) !important; border-color: var(--border-soft) !important; }
+
+.h-44{
+  height: 16rem !important;
+}
